@@ -18,32 +18,71 @@
 			text-align: center;
 		}
 
+		#dadi {
+			display: flex;
+			justify-content: center;
+
+		}
+
+
+		
+
 	</style>
 </head>
 <body>
 
 	<div id="spielfeld1">
-		<h1>Player 1</h1>
-		<h2>Letzter Wurf:</h2>
+		<h1 id="name1"></h1>
+		<h2>Last dice:</h2>
+			<div id="dadi">
+				<div id="dadoA"><img src="img/die_1.png" width="50px" height="50" halt="a dice"></div>
+				<div id="dadoB"><img src="img/die_1.png" width="50px" height="50" alt="a dice"></div>
+				<div id="dadoC"><img src="img/die_1.png" width="50px" height="50" alt="a dice"></div>
+			</div>
+
 		<p></p>
-		<h2>Summe Würfe:</h2>
+		<h2>Sum:</h2>
 		<p></p>
 	</div>
 	<div id="spielfeld2">
-		<h1>Player 2</h1>
-		<h2>Letzter Wurf:</h2>
+		<h1 id="name2"></h1>
+		<h2>Last dice:</h2>
+			<div id="dadi">
+				<div id="dadoD"><img src="img/die_1.png" width="50px" height="50" halt="a dice"></div>
+				<div id="dadoE"><img src="img/die_1.png" width="50px" height="50" alt="a dice"></div>
+				<div id="dadoF"><img src="img/die_1.png" width="50px" height="50" alt="a dice"></div>
+			</div>
 		<p></p>
-		<h2>Summe Würfe:</h2>
+		<h2>Sum:</h2>
 		<p></p>
-	</div>
-	<div id="interface">
-		<h1>Player 1s turn!</h1>
-		<button onclick="play()">PLAY!</button>
 	</div>
 
+	<div id="interface">
+		<h1 id="firstTurn"></h1>
+		<button onclick="play()">Play!</button>
+</div>
+
+
 	<script type="text/javascript">
-		
-		var numberOfDice = 2;
+var KO = 2;
+playerOne = prompt("Player 1, please write your name");
+playerTwo= prompt("Playeer 2, please write your name" );
+
+function NamePlayer() {
+  document.getElementById("name1").innerHTML = playerOne;
+  document.getElementById("name2").innerHTML = playerTwo;	
+}
+
+NamePlayer()
+
+function firstTurn() {
+  document.getElementById("firstTurn").innerHTML = "It is " + playerOne +"'s turn!";
+}
+
+firstTurn()
+
+
+		var numberOfDice = 3;
 		var playCounter = 1;
 		var maxPoints = 50;
 
@@ -55,11 +94,33 @@
 
 		function play(){
 
-			var thisThrow = 0;
-			for (var i = 1; i <= numberOfDice; i++){
-				thisThrow = thisThrow + Math.floor(Math.random() * 6)+1;
-			}
-			console.log(thisThrow);
+			// var thisThrow = 0;
+			// for (var i = 1; i <= numberOfDice; i++){
+			// 	thisThrow = thisThrow + Math.floor(Math.random() * 6)+1;
+			// }
+			if(KO % 2 == 0){
+				dadoA = Math.floor(Math.random()*6)+1;
+				document.getElementById("dadoA").innerHTML ='<img src="img/die_'+ dadoA +'.png" width="50px" height="50" halt="a dice">';
+				dadoB = Math.floor(Math.random()*6)+1;
+				document.getElementById("dadoB").innerHTML ='<img src="img/die_'+ dadoB +'.png" width="50px" height="50" halt="a dice">';
+				dadoC = Math.floor(Math.random()*6)+1;
+				document.getElementById("dadoC").innerHTML ='<img src="img/die_'+ dadoC +'.png" width="50px" height="50" halt="a dice">';
+				thisThrow = (dadoA + dadoB + dadoC);
+
+				console.log(thisThrow);
+			}else {
+				
+					dadoD = Math.floor(Math.random()*6)+1;
+					document.getElementById("dadoD").innerHTML ='<img src="img/die_'+ dadoD +'.png" width="50px" height="50" halt="a dice">';
+					dadoE = Math.floor(Math.random()*6)+1;
+					document.getElementById("dadoE").innerHTML ='<img src="img/die_'+ dadoE +'.png" width="50px" height="50" halt="a dice">';
+					dadoF = Math.floor(Math.random()*6)+1;
+					document.getElementById("dadoF").innerHTML ='<img src="img/die_'+ dadoF +'.png" width="50px" height="50" halt="a dice">';
+					thatThrow = (dadoD + dadoE + dadoF);
+			
+			console.log(thatThrow);
+}
+
 			if (playCounter % 2 != 0) {
 			//player 1s turn
 				player1Throw = thisThrow;
@@ -67,24 +128,24 @@
 				document.getElementsByTagName("p")[0].innerHTML = thisThrow;
 				document.getElementsByTagName("p")[1].innerHTML = player1Total;
 					if (player1Total > maxPoints) {
-						alert("Player 2 Wins!");
+						alert( playerTwo + " has won!");
 					}
 			} else{
 			//player 2s turn
-				player2Throw = thisThrow;
-				player2Total = player2Total + thisThrow;
-				document.getElementsByTagName("p")[2].innerHTML = thisThrow;
+				player2Throw = thatThrow;
+				player2Total = player2Total + thatThrow;
+				document.getElementsByTagName("p")[2].innerHTML = thatThrow;
 				document.getElementsByTagName("p")[3].innerHTML = player2Total;
 					if (player2Total > maxPoints) {
-						alert("Player 1 Wins!");
+						alert( playerTwo + " has won!");
 					}
 			}
 			playCounter++;
-
+			KO++ ;
 			if (playCounter % 2 == 0) {
-				document.getElementsByTagName("h1")[2].innerHTML = "Player 2's Turn!";
+				document.getElementsByTagName("h1")[2].innerHTML = "It is " + playerTwo +"'s turn!";
 			} else{
-				document.getElementsByTagName("h1")[2].innerHTML = "Player 1's Turn!";
+				document.getElementsByTagName("h1")[2].innerHTML = "It is " + playerOne +"'s turn!";
 
 			}
 
