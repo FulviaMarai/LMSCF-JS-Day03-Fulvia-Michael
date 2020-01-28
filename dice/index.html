@@ -2,68 +2,68 @@
 <html>
 <head>
 	<title>The Great Game!</title>
-	<style type="text/css">
-		
-		#spielfeld1, #spielfeld2 {
-			width: 50%;
-			height: 300px;
-			float: left;
-			text-align: center;
-		}
-		#interface {
-			clear: both;
-			width: 100%;
-			height: 100px;
-			border-top: 2px solid black;
-			text-align: center;
-		}
-
-		#dadi {
-			display: flex;
-			justify-content: center;
-
-		}
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
 
 		
 
 	</style>
 </head>
 <body>
+	<div id="body">
+		<div>
+			<h1 align="center" id="colorh1">A game of dice</h1>
+		</div>
+		
+		<div id="gameboard">
+			<div id="spielfeld1">
+			<h1 id="name1"></h1>
+			<h2>Last dice:</h2>
+				<div class="dadi">
+					<div id="dadoA"><img src="img/die_1.png" width="50px" height="50" halt="a dice"></div>
+					<div id="dadoB"><img src="img/die_1.png" width="50px" height="50" alt="a dice"></div>
+					<div id="dadoC"><img src="img/die_1.png" width="50px" height="50" alt="a dice"></div>
+				</div>
 
-	<div id="spielfeld1">
-		<h1 id="name1"></h1>
-		<h2>Last dice:</h2>
-			<div id="dadi">
-				<div id="dadoA"><img src="img/die_1.png" width="50px" height="50" halt="a dice"></div>
-				<div id="dadoB"><img src="img/die_1.png" width="50px" height="50" alt="a dice"></div>
-				<div id="dadoC"><img src="img/die_1.png" width="50px" height="50" alt="a dice"></div>
-			</div>
-
-		<p></p>
-		<h2>Sum:</h2>
-		<p></p>
-	</div>
-	<div id="spielfeld2">
-		<h1 id="name2"></h1>
-		<h2>Last dice:</h2>
-			<div id="dadi">
-				<div id="dadoD"><img src="img/die_1.png" width="50px" height="50" halt="a dice"></div>
-				<div id="dadoE"><img src="img/die_1.png" width="50px" height="50" alt="a dice"></div>
-				<div id="dadoF"><img src="img/die_1.png" width="50px" height="50" alt="a dice"></div>
-			</div>
-		<p></p>
-		<h2>Sum:</h2>
-		<p></p>
-	</div>
-
-	<div id="interface">
-		<h1 id="firstTurn"></h1>
-		<button onclick="play()">Play!</button>
+			<p></p>
+			<h2>Sum:</h2>
+			<p></p> 
+		</div>
+		<div id="spielfeld2">
+			<h1 id="name2"></h1>
+			<h2>Last dice:</h2>
+				<div class="dadi">
+					<div id="dadoD"><img src="img/die_1.png" width="50px" height="50" halt="a dice"></div>
+					<div id="dadoE"><img src="img/die_1.png" width="50px" height="50" alt="a dice"></div>
+					<div id="dadoF"><img src="img/die_1.png" width="50px" height="50" alt="a dice"></div>
+				</div>
+			<p></p>
+			<h2>Sum:</h2>
+			<p></p>
+		</div>
+		</div>
+		<div id="interface">
+			<h1 id="firstTurn"></h1>
+			<button onclick="play()">Play!</button>
+		</div>
 </div>
 
 
+
 	<script type="text/javascript">
+function random_bg_color() {
+    var x = Math.floor(Math.random() * 256);
+    var y = Math.floor(Math.random() * 256);
+    var z = Math.floor(Math.random() * 256);
+    var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+ console.log(bgColor);
+  
+    document.body.style.background = bgColor;
+    }
+
+random_bg_color();
+
+
 var KO = 2;
 playerOne = prompt("Player 1, please write your name");
 playerTwo= prompt("Playeer 2, please write your name" );
