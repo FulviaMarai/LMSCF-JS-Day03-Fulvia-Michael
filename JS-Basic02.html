@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<title>JS-Basic exercise 03 Day</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<!-- Create a JavaScript function to find the highest value in an array. 
+
+E.g. If we have the following values 1, 7, -3, 9 we should only get the highest value, number 9. -->
+
+<script>
+		
+	var a = Math.floor(Math.random()*20) - 9;
+	var b = Math.floor(Math.random()*20) - 9;
+	var c = Math.floor(Math.random()*20) - 9;
+	var d = Math.floor(Math.random()*20) - 9;
+
+	//ranNum = [a,b,c,d];
+
+
+// 	function getResult() {
+
+// 		var bigOne = Math.max(...ranNum);
+// 		  document.write(bigOne);
+//      }
+
+     
+
+// getResult();
+  
+
+var ranNum = [3,22,7,90];
+
+function findMax(){
+	var max = ranNum[0];
+	for(var i = 1;i<ranNum.length;i++){
+		if(max < ranNum[i]){
+			max = ranNum[i];
+		}
+	}
+
+	console.log(max);
+}
+
+findMax();
+
+
+	</script>
+
+</body>
+</html>
