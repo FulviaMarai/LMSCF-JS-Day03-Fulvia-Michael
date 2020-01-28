@@ -76,7 +76,7 @@ function NamePlayer() {
 NamePlayer()
 
 function firstTurn() {
-  document.getElementById("firstTurn").innerHTML = "It is " + playerOne +"'s turn!";
+		document.getElementById("firstTurn").innerHTML = "It is " + playerOne +"'s turn!";  
 }
 
 firstTurn()
@@ -141,13 +141,13 @@ firstTurn()
 					}
 			}
 			playCounter++;
-			KO++ ;
 			if (playCounter % 2 == 0) {
-				document.getElementsByTagName("h1")[2].innerHTML = "It is " + playerTwo +"'s turn!";
+				document.getElementById("firstTurn").innerHTML = "It is " + playerTwo +"'s turn!";
 			} else{
-				document.getElementsByTagName("h1")[2].innerHTML = "It is " + playerOne +"'s turn!";
+				document.getElementById("firstTurn").innerHTML = "It is " + playerOne +"'s turn!";
 
 			}
+			KO++ ;
 
 		}
 
